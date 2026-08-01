@@ -20,7 +20,7 @@ std::string CommandProcessor::execute(const std::string &input)
 
     const std::string command = normalizeCommand(tokens.front());
 
-    std::vector<std::string> arguments(
+    const std::vector<std::string> arguments(
         tokens.begin() + 1,
         tokens.end());
 
@@ -135,12 +135,12 @@ std::string CommandProcessor::executeGet(
     const std::optional<std::string> value =
         store_.get(arguments[0]);
 
-    if (!value.has_value())
+    if (!value)
     {
         return "(nil)";
     }
 
-    return value.value();
+    return *value;
 }
 
 std::string CommandProcessor::executeDelete(
