@@ -40,3 +40,8 @@ std::size_t InMemoryStore::size() const noexcept
 {
     return values_.size();
 }
+
+void InMemoryStore::clear() noexcept
+{
+    values_.clear();
+}
